@@ -147,12 +147,26 @@ class SliceAudioTab(QWidget):
             line_edit.setText(directory)
             self.save_settings()
 
+    def is_valid_output_folder(self, folder_path):
+        if not folder_path:
+            return False
+        if not os.path.exists(folder_path):
+            try:
+                os.makedirs(folder_path)
+            except OSError:
+                return False
+        return os.path.isdir(folder_path) and os.access(folder_path, os.W_OK)
+
     def run_slice_audio(self):
         input_dir = self.input_dir.text()
         output_dir = self.output_dir.text()
 
         if not input_dir or not output_dir:
             QMessageBox.warning(self, self.tr("错误"), self.tr("请选择输入和输出目录。"))
+            return
+
+        if not self.is_valid_output_folder(output_dir):
+            QMessageBox.warning(self, self.tr('警告'), self.tr('输出文件夹路径无效或无写入权限'))
             return
 
         command = ["fap", "slice-audio-v2"]

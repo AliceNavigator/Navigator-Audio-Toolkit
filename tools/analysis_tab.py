@@ -82,7 +82,7 @@ class FapAnalysisTab(QWidget):
         self.len_long_check = QCheckBox(self.tr("检测长文件"))
         self.len_long_threshold = QDoubleSpinBox()
         self.len_long_threshold.setRange(0, 3600)
-        self.len_long_threshold.setValue(100.0)
+        self.len_long_threshold.setValue(15.0)
         self.len_long_threshold.setToolTip(self.tr("设置长文件的阈值（秒）"))
 
         self.len_short_check = QCheckBox(self.tr("检测短文件"))

@@ -27,162 +27,162 @@
 <context>
     <name>AudioConverter</name>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="448"/>
+        <location filename="../navigator_audio_toolkit.py" line="474"/>
         <source>未鸟的音频工具箱 v0.1</source>
         <translation>Navigator Audio Toolkit v0.1</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="460"/>
+        <location filename="../navigator_audio_toolkit.py" line="491"/>
         <source>音频转换</source>
         <translation>Audio Conversion</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="465"/>
+        <location filename="../navigator_audio_toolkit.py" line="496"/>
         <source>响度匹配</source>
         <translation>Loudness Normalization</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="470"/>
+        <location filename="../navigator_audio_toolkit.py" line="501"/>
         <source>音频切片</source>
         <translation>Audio Slicer</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="475"/>
+        <location filename="../navigator_audio_toolkit.py" line="506"/>
         <source>数据分析</source>
         <translation>Audio Analysis</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="480"/>
+        <location filename="../navigator_audio_toolkit.py" line="511"/>
         <source>文件信息</source>
         <translation>File info</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="484"/>
+        <location filename="../navigator_audio_toolkit.py" line="515"/>
         <source>输入/输出设置</source>
         <translation>Input/Output Settings</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="490"/>
+        <location filename="../navigator_audio_toolkit.py" line="521"/>
         <source>选择输入</source>
         <translation>Select  Input</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="492"/>
+        <location filename="../navigator_audio_toolkit.py" line="523"/>
         <source>输入:</source>
         <translation>Input: </translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="498"/>
+        <location filename="../navigator_audio_toolkit.py" line="529"/>
         <source>选择输出</source>
         <translation>Select Output</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="500"/>
+        <location filename="../navigator_audio_toolkit.py" line="531"/>
         <source>输出:</source>
         <translation>Output:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="519"/>
+        <location filename="../navigator_audio_toolkit.py" line="550"/>
         <source>转换设置</source>
         <translation>Conversion Settings</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="526"/>
+        <location filename="../navigator_audio_toolkit.py" line="557"/>
         <source>格式:</source>
         <translation>Format：</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="942"/>
+        <location filename="../navigator_audio_toolkit.py" line="1120"/>
         <source>自定义</source>
         <translation>Custom</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="535"/>
+        <location filename="../navigator_audio_toolkit.py" line="566"/>
         <source>码率:</source>
         <translation>Bitrate:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1107"/>
+        <location filename="../navigator_audio_toolkit.py" line="1291"/>
         <source>与源相同</source>
         <translation>keep</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="545"/>
+        <location filename="../navigator_audio_toolkit.py" line="576"/>
         <source>采样率:</source>
         <translation>Sample rate:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="552"/>
+        <location filename="../navigator_audio_toolkit.py" line="583"/>
         <source>位深度:</source>
         <translation>Bit depth:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="955"/>
+        <location filename="../navigator_audio_toolkit.py" line="1133"/>
         <source>单声道</source>
         <translation>mono</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="957"/>
+        <location filename="../navigator_audio_toolkit.py" line="1135"/>
         <source>立体声</source>
         <translation>stereo</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="558"/>
+        <location filename="../navigator_audio_toolkit.py" line="589"/>
         <source>声道:</source>
         <translation>Channel:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="562"/>
+        <location filename="../navigator_audio_toolkit.py" line="593"/>
         <source>工作进程数:</source>
         <translation>Num workers:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="586"/>
+        <location filename="../navigator_audio_toolkit.py" line="617"/>
         <source>基础设置</source>
         <translation>Basic Settings</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="590"/>
+        <location filename="../navigator_audio_toolkit.py" line="621"/>
         <source>预设:</source>
         <translation>Presets:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="591"/>
+        <location filename="../navigator_audio_toolkit.py" line="622"/>
         <source>FFmpeg路径:</source>
         <translation>FFmpeg path:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="808"/>
+        <location filename="../navigator_audio_toolkit.py" line="887"/>
         <source>保存预设</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="754"/>
+        <location filename="../navigator_audio_toolkit.py" line="833"/>
         <source>选择FFmpeg</source>
         <translation>Select</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="635"/>
+        <location filename="../navigator_audio_toolkit.py" line="667"/>
         <source>当前总待处理文件数: 0</source>
         <translation>Current total files to process: 0</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="642"/>
+        <location filename="../navigator_audio_toolkit.py" line="674"/>
         <source>进度</source>
         <translation>Progress</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1064"/>
+        <location filename="../navigator_audio_toolkit.py" line="1248"/>
         <source>开始转换</source>
         <translation>Start Conversion</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="658"/>
+        <location filename="../navigator_audio_toolkit.py" line="690"/>
         <source>打开输出文件夹</source>
         <translation>Open Output Folder</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="667"/>
+        <location filename="../navigator_audio_toolkit.py" line="699"/>
         <source>GitHub开源地址：https://github.com/AliceNavigator/Navigator-Audio-Toolkit
 
 改后缀并不是转格式，请告诉每一个试图这么干的人并把这个软件塞给他！
@@ -194,92 +194,92 @@
                                                                    by  AliceNavigator</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="854"/>
+        <location filename="../navigator_audio_toolkit.py" line="1008"/>
         <source>警告</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="693"/>
+        <location filename="../navigator_audio_toolkit.py" line="725"/>
         <source>输出文件夹无效</source>
         <translation>Invalid output folder</translation>
     </message>
     <message>
         <location filename="../navigator_audio_toolkit.py" line="709"/>
         <source>FFmpeg未在系统路径或FFMPEG_PATH环境变量中找到，请手动指定FFmpeg路径</source>
-        <translation>FFmpeg not found in system path or FFMPEG_PATH environment variable. Please specify FFmpeg path manually</translation>
+        <translation type="obsolete">FFmpeg not found in system path or FFMPEG_PATH environment variable. Please specify FFmpeg path manually</translation>
     </message>
     <message>
         <location filename="../navigator_audio_toolkit.py" line="711"/>
         <source>FFmpeg路径无效，请手动指定正确的FFmpeg路径</source>
-        <translation>Invalid FFmpeg path. Please specify the correct FFmpeg path manually</translation>
+        <translation type="obsolete">Invalid FFmpeg path. Please specify the correct FFmpeg path manually</translation>
     </message>
     <message>
         <location filename="../navigator_audio_toolkit.py" line="720"/>
         <source>FFprobe未在系统路径或FFPROBE_PATH环境变量中找到，请手动指定FFprobe路径</source>
-        <translation>FFprobe not found in system path or FFPROBE_PATH environment variable. Please specify FFprobe path manually</translation>
+        <translation type="obsolete">FFprobe not found in system path or FFPROBE_PATH environment variable. Please specify FFprobe path manually</translation>
     </message>
     <message>
         <location filename="../navigator_audio_toolkit.py" line="722"/>
         <source>FFprobe路径无效，请手动指定正确的FFprobe路径</source>
-        <translation>Invalid FFprobe path. Please specify the correct FFprobe path manually</translation>
+        <translation type="obsolete">Invalid FFprobe path. Please specify the correct FFprobe path manually</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="734"/>
+        <location filename="../navigator_audio_toolkit.py" line="813"/>
         <source>当前总待处理文件数: {}</source>
         <translation>Current total files to process: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="737"/>
+        <location filename="../navigator_audio_toolkit.py" line="816"/>
         <source>选择输出文件夹</source>
         <translation>Select Output Folder</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="808"/>
+        <location filename="../navigator_audio_toolkit.py" line="887"/>
         <source>输入预设名称:</source>
         <translation>Enter preset name:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="854"/>
+        <location filename="../navigator_audio_toolkit.py" line="1004"/>
         <source>请填写所有必要信息</source>
         <translation> Please fill in all necessary information</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="867"/>
+        <location filename="../navigator_audio_toolkit.py" line="1026"/>
         <source>强制终止</source>
         <translation>Force Stop</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="985"/>
+        <location filename="../navigator_audio_toolkit.py" line="1168"/>
         <source>转换已终止</source>
         <translation>Conversion terminated</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="987"/>
+        <location filename="../navigator_audio_toolkit.py" line="1170"/>
         <source>转换终止</source>
         <translation>Conversion terminated</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="987"/>
+        <location filename="../navigator_audio_toolkit.py" line="1170"/>
         <source>转换已由用户强制终止</source>
         <translation>Conversion forcibly terminated by user</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1009"/>
+        <location filename="../navigator_audio_toolkit.py" line="1192"/>
         <source>总计处理{}个文件，成功{}个，失败{}个</source>
         <translation>Total processed {} files, {} successful, {} failed</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1060"/>
+        <location filename="../navigator_audio_toolkit.py" line="1244"/>
         <source>转换完成</source>
         <translation>Conversion Completed</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1032"/>
+        <location filename="../navigator_audio_toolkit.py" line="1215"/>
         <source>以下是转换失败的文件：</source>
         <translation>The following files failed to convert:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1042"/>
+        <location filename="../navigator_audio_toolkit.py" line="1147"/>
         <source>
 
 以下是一些常见失败原因：
@@ -299,7 +299,7 @@
 此外，请妥善利用文件信息页面，通过把媒体文件拖入能得到详细的信息帮助你确定错误。
 
 </source>
-        <translation>
+        <translation type="obsolete">
 
 Here are some common reasons for failure:
 
@@ -318,17 +318,17 @@ Here are some common reasons for failure:
 Please make good use of the file information page. By dragging media files into it, you can get detailed information to help you identify errors.</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="1053"/>
+        <location filename="../navigator_audio_toolkit.py" line="1237"/>
         <source>确定</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="747"/>
+        <location filename="../navigator_audio_toolkit.py" line="826"/>
         <source>所选择的不是有效的 FFmpeg 可执行文件</source>
         <translation>Not a valid FFmpeg executable</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="750"/>
+        <location filename="../navigator_audio_toolkit.py" line="829"/>
         <source>尝试验证FFmpeg可用性时出错：
 {} 
 文件可能已经损坏</source>
@@ -337,20 +337,136 @@ Please make good use of the file information page. By dragging media files into 
 The file may be corrupted</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="761"/>
+        <location filename="../navigator_audio_toolkit.py" line="840"/>
         <source>无效的 FFmpeg</source>
         <translation>Invalid FFmpeg</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="749"/>
+        <source>FFmpeg未在系统PATH或指定路径中找到，请手动指定正确的FFmpeg路径</source>
+        <translation>FFmpeg not found in the system PATH or specified path. Please manually specify the correct FFmpeg path.</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="791"/>
+        <source>FFprobe未在系统PATH或指定路径中找到，请手动指定正确的FFprobe路径</source>
+        <translation>FFprobe not found in the system PATH or specified path. Please manually specify the correct FFprobe path.</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="1008"/>
+        <source>输出文件夹路径无效或无写入权限</source>
+        <translation>Output folder path is invalid or lacks write permission</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="968"/>
+        <source>警告：无法获取输入文件的声道信息: {}
+将跳过此文件的声道相关检查。</source>
+        <translation>WARNING: Unable to get channel information for input file: {}
+Channel related checks will be skipped for this file.</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="979"/>
+        <source>参数错误</source>
+        <translation>Parameter error</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="979"/>
+        <source>{} 格式在单声道模式下的最大码率为 {}k</source>
+        <translation>The maximum bit rate of the {} format in mono mode is {}k</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="1223"/>
+        <source>
+
+以下是一些常见失败原因：
+
+1.转为ogg格式时：
+  原始文件采样率非44.1或者48kHz，而选择了与源相同，或者自定义码率超过500k
+
+2.转为aac格式时：
+  原始文件采样率非支持的数值（见下拉菜单），而选择了与源相同
+
+3.转为flac格式时：
+  在自定义数值上设置了常规播放器不支持的数值，虽然可以转换，但可能只有专业软件能打开
+
+4.其他：
+  请检查你的输入文件，它可能已损坏或被加密，如果是Unicode编码问题一般可以通过简单的改名解决
+
+此外，请妥善利用文件信息页面，通过把媒体文件拖入能得到详细的信息帮助你确定错误。
+
+</source>
+        <translation type="obsolete">
+
+Here are some common reasons for failure:
+
+1. When converting to ogg format:
+  The original file&apos;s sample rate is not 44.1 or 48kHz, but &quot;keep&quot; was selected, or the custom bitrate exceeds 500k
+
+2. When converting to aac format:
+  The original file&apos;s sample rate is not a supported value (see dropdown menu), but &quot;keep&quot; was selected
+
+3. When converting to flac format:
+  Custom values were set that are not supported by regular players. Although conversion is possible, only professional software may be able to open it
+
+4. Others:
+  Please check your input file, it may be corrupted or encrypted. If it&apos;s a Unicode encoding issue, it can usually be resolved by simply renaming the file
+
+Please make good use of the file information page. By dragging media files into it, you can get detailed information to help you identify errors.</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="1225"/>
+        <source>
+
+以下是一些常见失败原因：
+
+1.转为ogg格式时：
+  原始文件采样率非44.1或者48kHz，而选择了与源相同，或者自定义码率超过500k。单声道文件码率超过192k
+
+2.转为opus格式时：
+  单声道文件码率超过256k，无论是手动设置还是尝试转换单声道文件
+
+3.转为aac格式时：
+  原始文件采样率非支持的数值（见下拉菜单），而选择了与源相同
+
+4.转为flac格式时：
+  在自定义数值上设置了常规播放器不支持的数值，虽然可以转换，但可能只有专业软件能打开
+
+5.其他：
+  请检查你的输入文件，它可能已损坏或被加密，如果是Unicode编码问题一般可以通过简单的改名解决
+
+此外，请妥善利用文件信息页面，通过把媒体文件拖入能得到详细的信息帮助你确定错误。
+
+</source>
+        <translation>
+
+Here are some common reasons for failure:
+
+1. When converting to ogg format:
+  The original file&apos;s sample rate is not 44.1 or 48kHz, but &apos;keep&apos; was selected, or the custom bitrate exceeds 500k. For mono files, the bitrate exceeds 192k
+
+2. When converting to opus format:
+  For mono files, the bitrate exceeds 256k, whether manually set or when attempting to convert a mono file while &quot;keep&quot; was selected
+
+3. When converting to aac format:
+  The original file&apos;s sample rate is not a supported value (see dropdown menu), but &quot;keep&quot; was selected
+
+4. When converting to flac format:
+  Custom values were set that are not supported by regular players. Although conversion is possible, only professional software may be able to open it
+
+5. Others:
+  Please check your input file, it may be corrupted or encrypted. If it&apos;s a Unicode encoding issue, it can usually be resolved by simply renaming the file
+
+Additionally, please make good use of the file information page. By dragging media files into it, you can get detailed information to help you identify errors.</translation>
     </message>
 </context>
 <context>
     <name>ConversionManager</name>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="364"/>
+        <location filename="../navigator_audio_toolkit.py" line="379"/>
         <source>已完成: {}</source>
         <translation>Completed: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="366"/>
+        <location filename="../navigator_audio_toolkit.py" line="381"/>
         <source>错误 ({}): {}</source>
         <translation>Error ({}): {}</translation>
     </message>
@@ -358,120 +474,120 @@ The file may be corrupted</translation>
 <context>
     <name>DragDropWidget</name>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="152"/>
+        <location filename="../navigator_audio_toolkit.py" line="165"/>
         <source>请把要分析的媒体文件拖拽到这里...</source>
         <translation>Please drag and drop the media files you want to analyze here...</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="184"/>
+        <location filename="../navigator_audio_toolkit.py" line="198"/>
         <source>选择FFprobe</source>
         <translation>Select FFprobe</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="159"/>
+        <location filename="../navigator_audio_toolkit.py" line="173"/>
         <source>FFprobe路径:</source>
         <translation>Select FFprobe</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="203"/>
+        <location filename="../navigator_audio_toolkit.py" line="217"/>
         <source>请先设置FFprobe路径</source>
         <translation>Please specify the correct FFprobe path first</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="224"/>
+        <location filename="../navigator_audio_toolkit.py" line="238"/>
         <source>文件: {}</source>
         <translation>File: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="225"/>
+        <location filename="../navigator_audio_toolkit.py" line="239"/>
         <source>格式: {}</source>
         <translation>Format: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="227"/>
+        <location filename="../navigator_audio_toolkit.py" line="241"/>
         <source>时长: {:.2f} 秒</source>
         <translation>Duration: {:.2f} seconds</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="231"/>
+        <location filename="../navigator_audio_toolkit.py" line="245"/>
         <source>总码率: {} kb/s</source>
         <translation>Total Bitrate: {} kb/s</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="236"/>
+        <location filename="../navigator_audio_toolkit.py" line="250"/>
         <source>大小: {:.1f} MiB</source>
         <translation>Size: {:.1f} MiB</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="239"/>
+        <location filename="../navigator_audio_toolkit.py" line="253"/>
         <source>
 流 #{}: </source>
         <translation>
 Stream #{}:</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="240"/>
+        <location filename="../navigator_audio_toolkit.py" line="254"/>
         <source>类型: {}</source>
         <translation>Type: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="241"/>
+        <location filename="../navigator_audio_toolkit.py" line="255"/>
         <source>编码: {}</source>
         <translation>Codec: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="243"/>
+        <location filename="../navigator_audio_toolkit.py" line="257"/>
         <source>分辨率: {}x{}</source>
         <translation>Resolution: {}x{}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="245"/>
+        <location filename="../navigator_audio_toolkit.py" line="259"/>
         <source>采样率: {} Hz</source>
         <translation>Sample Rate: {} Hz</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="247"/>
+        <location filename="../navigator_audio_toolkit.py" line="261"/>
         <source>声道: {}</source>
         <translation>Channels: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="253"/>
+        <location filename="../navigator_audio_toolkit.py" line="267"/>
         <source>码率: {} kb/s</source>
         <translation>Bitrate: {} kb/s</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="266"/>
+        <location filename="../navigator_audio_toolkit.py" line="280"/>
         <source>大小: {:.1f} MiB ({:.1f}%)</source>
         <translation>Size: {:.1f} MiB ({:.1f}%)</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="288"/>
+        <location filename="../navigator_audio_toolkit.py" line="302"/>
         <source>无法分析 {}: FFprobe 命令执行失败
 {}</source>
         <translation>Unable to analyze {}: FFprobe command execution failed
 {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="290"/>
+        <location filename="../navigator_audio_toolkit.py" line="304"/>
         <source>无法分析 {}: JSON 解析错误
 {}</source>
         <translation>Unable to analyze {}: JSON parsing error
 {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="292"/>
+        <location filename="../navigator_audio_toolkit.py" line="306"/>
         <source>无法分析 {}: 编码错误
 {}</source>
         <translation>Unable to analyze {}: Encoding error
 {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="294"/>
+        <location filename="../navigator_audio_toolkit.py" line="308"/>
         <source>无法分析 {}: {}</source>
         <translation>Unable to analyze {}: {}</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="283"/>
+        <location filename="../navigator_audio_toolkit.py" line="297"/>
         <source>
 
 ====详细信息====
@@ -484,12 +600,12 @@ Stream #{}:</translation>
 </translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="177"/>
+        <location filename="../navigator_audio_toolkit.py" line="191"/>
         <source>所选择的不是有效的 FFprobe 可执行文件</source>
         <translation>Not a valid FFprobe executable</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="180"/>
+        <location filename="../navigator_audio_toolkit.py" line="194"/>
         <source>尝试验证FFprobe可用性时出错：
 {} 
 文件可能已经损坏</source>
@@ -498,7 +614,7 @@ Stream #{}:</translation>
 The file may be corrupted</translation>
     </message>
     <message>
-        <location filename="../navigator_audio_toolkit.py" line="190"/>
+        <location filename="../navigator_audio_toolkit.py" line="204"/>
         <source>无效的 FFprobe</source>
         <translation>Invalid FFprobe</translation>
     </message>
@@ -691,12 +807,12 @@ The file may be corrupted</translation>
         <translation>Analysis Complete</translation>
     </message>
     <message>
-        <location filename="../tools/analysis_tab.py" line="278"/>
+        <location filename="../tools/analysis_tab.py" line="280"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../tools/analysis_tab.py" line="278"/>
+        <location filename="../tools/analysis_tab.py" line="280"/>
         <source>无效的目录路径</source>
         <translation>Invalid input directory path</translation>
     </message>
@@ -817,17 +933,17 @@ Num workers: the number of files to be processed simultaneously, it is not recom
         <translation>Start processing</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="211"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="221"/>
         <source>错误：请选择输入和输出目录</source>
         <translation>Error: Please select input and output directories</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="231"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="245"/>
         <source>开始处理...</source>
         <translation>Start processing...</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="235"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="249"/>
         <source>以下文件格式不受支持（目前仅支持.mp3 .wav .flac）：
 
 </source>
@@ -837,12 +953,12 @@ Num workers: the number of files to be processed simultaneously, it is not recom
 </translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="238"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="252"/>
         <source>共 {} 个不支持的文件</source>
         <translation>Total {} unsupported files</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="240"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="254"/>
         <source>
 
 继续处理将很可能报错，是否仍要继续？</source>
@@ -851,29 +967,39 @@ Num workers: the number of files to be processed simultaneously, it is not recom
 Continuing the process will most likely result in an error. Do you still want to continue?</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="242"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="256"/>
         <source>不支持的文件格式</source>
         <translation>Unsupported file format</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="250"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="264"/>
         <source>处理已取消</source>
         <translation>Processing Cancelled</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="256"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="270"/>
         <source>处理完成</source>
         <translation>Processing completed</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="272"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="286"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../tools/loudness_normalization_tab.py" line="272"/>
+        <location filename="../tools/loudness_normalization_tab.py" line="286"/>
         <source>无效的目录路径</source>
         <translation>Invalid directory path</translation>
+    </message>
+    <message>
+        <location filename="../tools/loudness_normalization_tab.py" line="225"/>
+        <source>警告</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="../tools/loudness_normalization_tab.py" line="225"/>
+        <source>输出文件夹路径无效或无写入权限</source>
+        <translation>Output folder path is invalid or lacks write permission</translation>
     </message>
 </context>
 <context>
@@ -1044,39 +1170,49 @@ Continuing the process will most likely result in an error. Do you still want to
         <translation>Select input directory</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="253"/>
+        <location filename="../tools/slice_audio_tab.py" line="267"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="155"/>
+        <location filename="../tools/slice_audio_tab.py" line="165"/>
         <source>请选择输入和输出目录。</source>
         <translation>Please select the input and output directory.</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="201"/>
+        <location filename="../tools/slice_audio_tab.py" line="215"/>
         <source>处理中...</source>
         <translation>Processing...</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="237"/>
+        <location filename="../tools/slice_audio_tab.py" line="251"/>
         <source>处理完成。</source>
         <translation>Processing completed.</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="238"/>
+        <location filename="../tools/slice_audio_tab.py" line="252"/>
         <source>处理完成</source>
         <translation>Processing completed</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="238"/>
+        <location filename="../tools/slice_audio_tab.py" line="252"/>
         <source>音频切片处理已完成。</source>
         <translation>Audio slice processing completed.</translation>
     </message>
     <message>
-        <location filename="../tools/slice_audio_tab.py" line="253"/>
+        <location filename="../tools/slice_audio_tab.py" line="267"/>
         <source>无效的目录路径</source>
         <translation>Invalid directory path</translation>
+    </message>
+    <message>
+        <location filename="../tools/slice_audio_tab.py" line="169"/>
+        <source>警告</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="../tools/slice_audio_tab.py" line="169"/>
+        <source>输出文件夹路径无效或无写入权限</source>
+        <translation>Output folder path is invalid or lacks write permission</translation>
     </message>
 </context>
 </TS>

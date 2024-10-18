@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import shutil
 import subprocess
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QLabel, QLineEdit, QComboBox,
@@ -48,6 +49,12 @@ FORMAT_PARAMS = {
     'ogg': {
         'bitrate': ['320k', '256k', '192k', '128k', '64k', '自定义'],
         'sample_rate': ['与源相同', '44100', '48000'],
+        'bits': ['与源相同'],
+        'channels': ['与源相同', '单声道', '立体声']
+    },
+    'opus': {
+        'bitrate': ['320k', '256k', '192k', '128k', '64k', '自定义'],
+        'sample_rate': ['与源相同', '48000', '24000', '16000', '8000'],
         'bits': ['与源相同'],
         'channels': ['与源相同', '单声道', '立体声']
     }
@@ -160,6 +167,7 @@ class DragDropWidget(QWidget):
 
         self.ffprobe_layout = QHBoxLayout()
         self.ffprobe_edit = QLineEdit(self)
+        self.ffprobe_edit.setText("ffprobe")
         self.ffprobe_button = QPushButton(self.tr('选择FFprobe'), self)
         self.ffprobe_button.clicked.connect(self.select_ffprobe)
         self.ffprobe_layout.addWidget(QLabel(self.tr('FFprobe路径:')))
@@ -316,7 +324,7 @@ class DragDropLineEdit(QLineEdit):
     def dropEvent(self, event):
         if event.mimeData().hasUrls():
             paths = [url.toLocalFile() for url in event.mimeData().urls()]
-            self.setText(';'.join(paths))  # Merge Paths
+            self.setText('⁏'.join(paths))  # Merge Paths
             self.files_dropped.emit()
         else:
             super().dropEvent(event)
@@ -390,6 +398,8 @@ class ConversionManager(QThread):
 class AudioConverter(QWidget):
     def __init__(self):
         super().__init__()
+        self.resampler = 'default'
+        self.aac_encoder = 'aac'
         self.progress_text_edit = None
         self.convert_button = None
         self.progress_bar = None
@@ -416,8 +426,6 @@ class AudioConverter(QWidget):
         self.setWindowIcon(QIcon(":/images/icon.ico"))
         self.load_presets()
         self.update_file_count()
-        self.check_ffmpeg()
-        self.check_ffprobe()
         self.settings = QSettings('Settings.ini', QSettings.IniFormat)
         self.load_settings()
         self.conversion_manager = None
@@ -450,10 +458,26 @@ class AudioConverter(QWidget):
                     background-color: rgba(255, 255, 255, 220);
                     }
                 """)
+        self.check_ffmpeg()
+        self.check_ffprobe()
 
     def initUI(self):
+        # Get the primary screen scaling_factor
+        screen = QApplication.primaryScreen()
+        dpi = screen.logicalDotsPerInch()
+        scaling_factor = max(1.0, dpi / 96.0)  # assuming 96 DPI as the base
+
+        # Scale the window size
+        base_width, base_height = 650, 450
+        scaled_width = int(base_width * scaling_factor)
+        scaled_height = int(base_height * scaling_factor)
         self.setWindowTitle(self.tr('未鸟的音频工具箱 v0.1'))
-        self.setGeometry(100, 100, 650, 450)
+        self.setGeometry(100, 100, scaled_width, scaled_height)
+
+        # Scale the font, in theory this is redundant but there are strange special cases
+        font = QApplication.font()
+        font.setPointSize(int(font.pointSize()))
+        QApplication.setFont(font)
 
         main_layout = QVBoxLayout()
 
@@ -528,7 +552,7 @@ class AudioConverter(QWidget):
 
         format_layout = QHBoxLayout()
         self.format_combo = QComboBox()
-        self.format_combo.addItems(['mp3', 'flac', 'wav', 'aac', 'ogg'])
+        self.format_combo.addItems(['mp3', 'flac', 'wav', 'aac', 'ogg', 'opus'])
         self.format_combo.currentTextChanged.connect(self.update_params)
         format_layout.addWidget(QLabel(self.tr('格式:')))
         format_layout.addWidget(self.format_combo)
@@ -620,6 +644,7 @@ class AudioConverter(QWidget):
         # FFmpeg settings
         ffmpeg_layout = QHBoxLayout()
         self.ffmpeg_edit = QLineEdit()
+        self.ffmpeg_edit.setText("ffmpeg")
         ffmpeg_button = QPushButton(self.tr('选择FFmpeg'))
         ffmpeg_button.clicked.connect(self.select_ffmpeg)
 
@@ -707,37 +732,84 @@ class AudioConverter(QWidget):
         event.accept()
 
     def check_ffmpeg(self):
-        ffmpeg_path = os.environ.get('FFMPEG_PATH', 'ffmpeg')
-        try:
-            subprocess.run([ffmpeg_path, '-version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                           creationflags=subprocess.CREATE_NO_WINDOW)
+        # Check the path in the edit box first
+        ffmpeg_path = self.ffmpeg_edit.text()
+        if ffmpeg_path and self.is_valid_ffmpeg(ffmpeg_path):
+            self.update_ffmpeg_capabilities(ffmpeg_path)
+            return
+
+        # Then check in the system PATH
+        ffmpeg_path = shutil.which('ffmpeg')
+        if ffmpeg_path:
             self.ffmpeg_edit.setText(ffmpeg_path)
-        except FileNotFoundError:
-            QMessageBox.warning(self, self.tr('警告'), self.tr('FFmpeg未在系统路径或FFMPEG_PATH环境变量中找到，请手动指定FFmpeg路径'))
-        except subprocess.CalledProcessError:
-            QMessageBox.warning(self, self.tr('警告'), self.tr('FFmpeg路径无效，请手动指定正确的FFmpeg路径'))
+            self.update_ffmpeg_capabilities(ffmpeg_path)
+            return
+
+        # If we get here, no valid FFprobe was found
+        QMessageBox.warning(self, self.tr('警告'),
+                            self.tr('FFmpeg未在系统PATH或指定路径中找到，请手动指定正确的FFmpeg路径'))
+
+    def is_valid_ffmpeg(self, path):
+        try:
+            result = subprocess.run([path, '-version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                    creationflags=subprocess.CREATE_NO_WINDOW, text=True, encoding='utf-8',
+                                    errors='replace')
+            return "ffmpeg version" in result.stdout
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            return False
+
+    def update_ffmpeg_capabilities(self, ffmpeg_path):
+        result = subprocess.run([ffmpeg_path, '-version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                creationflags=subprocess.CREATE_NO_WINDOW, text=True, encoding='utf-8',
+                                errors='replace')
+
+        if '--enable-libsoxr' in result.stdout:
+            self.resampler = 'soxr'
+        else:
+            self.resampler = 'default'
+
+        if '--enable-libfdk-aac' in result.stdout:
+            # libfdk_aac cuts off the spectrum at around 17kHz, which I don't like. It can be enabled if necessary, but for now, the built-in encoder performs better.
+            self.aac_encoder = 'aac'
+            # self.aac_encoder = 'libfdk_aac'
+        else:
+            self.aac_encoder = 'aac'
 
     def check_ffprobe(self):
-        ffprobe_path = os.environ.get('FFPROBE_PATH', 'ffprobe')
-        try:
-            subprocess.run([ffprobe_path, '-version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                           creationflags=subprocess.CREATE_NO_WINDOW)
+        # Check the path in the edit box first
+        ffprobe_path = self.file_info_tab.ffprobe_edit.text()
+        if ffprobe_path and self.is_valid_ffprobe(ffprobe_path):
+            return
+
+        # Then check in the system PATH
+        ffprobe_path = shutil.which('ffprobe')
+        if ffprobe_path:
             self.file_info_tab.ffprobe_edit.setText(ffprobe_path)
-        except FileNotFoundError:
-            QMessageBox.warning(self, self.tr('警告'), self.tr('FFprobe未在系统路径或FFPROBE_PATH环境变量中找到，请手动指定FFprobe路径'))
-        except subprocess.CalledProcessError:
-            QMessageBox.warning(self, self.tr('警告'), self.tr('FFprobe路径无效，请手动指定正确的FFprobe路径'))
+            return
+
+        # If we get here, no valid FFprobe was found
+        QMessageBox.warning(self, self.tr('警告'),
+                            self.tr('FFprobe未在系统PATH或指定路径中找到，请手动指定正确的FFprobe路径'))
+
+    def is_valid_ffprobe(self, path):
+        try:
+            result = subprocess.run([path, '-version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                    creationflags=subprocess.CREATE_NO_WINDOW, text=True, encoding='utf-8',
+                                    errors='replace')
+            return "ffprobe version" in result.stdout
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            return False
 
     def select_input(self):
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.ExistingFiles)
         if file_dialog.exec_():
             files = file_dialog.selectedFiles()
-            self.input_edit.setText(';'.join(files))
+            self.input_edit.setText('⁏'.join(files))
             self.update_file_count()
 
     def update_file_count(self):
-        file_count = len(self.input_edit.text().split(';')) if self.input_edit.text() else 0
+        file_count = len(self.input_edit.text().split('⁏')) if self.input_edit.text() else 0
         self.file_count_label.setText(self.tr('当前总待处理文件数: {}').format(file_count))
 
     def select_output(self):
@@ -851,14 +923,89 @@ class AudioConverter(QWidget):
         except FileNotFoundError:
             self.presets = {}
 
+    def get_input_audio_channels(self, input_file):
+        ffprobe_path = self.file_info_tab.ffprobe_edit.text()
+        cmd = [
+            ffprobe_path,
+            '-v', 'quiet',
+            '-print_format', 'json',
+            '-show_streams',
+            '-select_streams', 'a:0',
+            input_file
+        ]
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            data = json.loads(result.stdout)
+            return int(data['streams'][0]['channels'])
+        except Exception as e:
+            print(f"Error getting audio channels: {e}")
+            return None
+
+    def validate_params(self, params, input_files):
+        format = params['format']
+        ffmpeg_params = params['ffmpeg_params']
+
+        # Extract parameters
+        bitrate = next((p for i, p in enumerate(ffmpeg_params) if ffmpeg_params[i - 1] == '-b:a'), None)
+        channels = next((p for i, p in enumerate(ffmpeg_params) if ffmpeg_params[i - 1] == '-ac'), None)
+        sample_rate = next((p for i, p in enumerate(ffmpeg_params) if ffmpeg_params[i - 1] == '-ar'), None)
+        bits = next((p for i, p in enumerate(ffmpeg_params) if ffmpeg_params[i - 1] == '-sample_fmt'), None)
+
+        # Check mono setting
+        is_mono_setting = channels == '1' or self.channels_combo.currentText() == self.tr('单声道')
+        is_source_setting = self.channels_combo.currentText() == self.tr('与源相同')
+
+        # Define format-specific constraints
+        format_constraints = {
+            'opus': {'max_bitrate_mono': 256},
+            'ogg': {'max_bitrate_mono': 192}
+        }
+
+        for input_file in input_files:
+            input_channels = self.get_input_audio_channels(input_file)
+
+            if input_channels is None:
+                self.progress_text_edit.append(self.tr('警告：无法获取输入文件的声道信息: {}\n将跳过此文件的声道相关检查。').format(input_file))
+                continue  # Skip channel-related checks for this file
+
+            is_mono = is_mono_setting or (is_source_setting and input_channels == 1)
+
+            if format in format_constraints:
+                constraints = format_constraints[format]
+                if is_mono and bitrate:
+                    max_bitrate = constraints['max_bitrate_mono']
+                    current_bitrate = int(bitrate.replace('k', ''))
+                    if current_bitrate > max_bitrate:
+                        QMessageBox.warning(self, self.tr('参数错误'),
+                                            self.tr('{} 格式在单声道模式下的最大码率为 {}k').format(format, max_bitrate))
+                        return False
+
+        # Additional parameter checks can be added here
+
+        return True
+
+    def is_valid_output_folder(self, folder_path):
+        if not folder_path:
+            return False
+        if not os.path.exists(folder_path):
+            try:
+                os.makedirs(folder_path)
+            except OSError:
+                return False
+        return os.path.isdir(folder_path) and os.access(folder_path, os.W_OK)
+
     def start_conversion(self):
         self.progress_text_edit.clear()
-        input_paths = self.input_edit.text().split(';')
+        input_paths = self.input_edit.text().split('⁏')
         output_folder = self.output_edit.text()
         ffmpeg_path = self.ffmpeg_edit.text()
 
         if not input_paths or not output_folder or not ffmpeg_path:
             QMessageBox.warning(self, self.tr('警告'), self.tr('请填写所有必要信息'))
+            return
+
+        if not self.is_valid_output_folder(output_folder):
+            QMessageBox.warning(self, self.tr('警告'), self.tr('输出文件夹路径无效或无写入权限'))
             return
 
         input_files = input_paths
@@ -869,6 +1016,11 @@ class AudioConverter(QWidget):
         }
 
         params.update(self.get_audio_params())
+
+        '''
+        if not self.validate_params(params, input_paths):
+            return
+        '''
 
         self.is_converting = True
         self.convert_button.setText(self.tr('强制终止'))
@@ -893,7 +1045,8 @@ class AudioConverter(QWidget):
             'flac': self.handle_flac,
             'wav': self.handle_wav,
             'aac': self.handle_aac,
-            'ogg': self.handle_ogg
+            'ogg': self.handle_ogg,
+            'opus': self.handle_opus
         }
 
         current_format = self.format_combo.currentText()
@@ -902,6 +1055,8 @@ class AudioConverter(QWidget):
 
     def handle_default(self):
         params = []
+        # Ignore the video stream
+        params.extend(['-vn'])
 
         if self.bitrate_combo.currentText() == self.tr('自定义'):
             bitrate = self.bitrate_edit.text()
@@ -910,6 +1065,13 @@ class AudioConverter(QWidget):
             params.extend(['-b:a', bitrate])
         elif self.bitrate_combo.currentText() != self.tr('与源相同'):
             params.extend(['-b:a', self.bitrate_combo.currentText()])
+
+        if self.sample_rate_combo.currentText() == self.tr('自定义') or self.sample_rate_combo.currentText() != self.tr(
+                '与源相同'):
+            if self.resampler == 'soxr':
+                params.extend(['-af', f'aresample=resampler=soxr'])
+            else:
+                params.extend(['-af', f'aresample'])
 
         if self.sample_rate_combo.currentText() == self.tr('自定义'):
             sample_rate = self.sample_rate_edit.text()
@@ -941,10 +1103,19 @@ class AudioConverter(QWidget):
 
     def handle_flac(self):
         params = []
+        # Ignore the video stream
+        params.extend(['-vn'])
         params.extend(['-c:a', 'flac'])
 
         compression_level = '5'
         params.extend(['-compression_level', compression_level])
+
+        if self.sample_rate_combo.currentText() == self.tr('自定义') or self.sample_rate_combo.currentText() != self.tr(
+                '与源相同'):
+            if self.resampler == 'soxr':
+                params.extend(['-af', f'aresample=resampler=soxr'])
+            else:
+                params.extend(['-af', f'aresample'])
 
         if self.sample_rate_combo.currentText() == self.tr('自定义'):
             sample_rate = self.sample_rate_edit.text()
@@ -973,12 +1144,17 @@ class AudioConverter(QWidget):
 
     def handle_aac(self):
         params = self.handle_default()
-        params['ffmpeg_params'].extend(['-c:a', 'aac'])
+        params['ffmpeg_params'].extend(['-c:a', self.aac_encoder])
         return params
 
     def handle_ogg(self):
         params = self.handle_default()
         params['ffmpeg_params'].extend(['-c:a', 'libvorbis'])
+        return params
+
+    def handle_opus(self):
+        params = self.handle_default()
+        params['ffmpeg_params'].extend(['-c:a', 'libopus'])
         return params
 
     def stop_conversion(self):
@@ -1048,10 +1224,11 @@ class AudioConverter(QWidget):
             failed_files_text_edit.setPlainText(failed_files_text)
             failed_files_text_edit.append(
                 self.tr("\n\n以下是一些常见失败原因：\n\n"
-                        "1.转为ogg格式时：\n  原始文件采样率非44.1或者48kHz，而选择了与源相同，或者自定义码率超过500k\n\n"
-                        "2.转为aac格式时：\n  原始文件采样率非支持的数值（见下拉菜单），而选择了与源相同，或者自定义码率超过512k\n\n"
-                        "3.转为flac格式时：\n  在自定义数值上设置了常规播放器不支持的数值，虽然可以转换，但可能只有专业软件能打开\n\n"
-                        "4.其他：\n  请检查你的输入文件，它可能已损坏或被加密，如果是Unicode编码问题一般可以通过简单的改名解决\n\n"
+                        "1.转为ogg格式时：\n  原始文件采样率非44.1或者48kHz，而选择了与源相同，或者自定义码率超过500k。单声道文件码率超过192k\n\n"
+                        "2.转为opus格式时：\n  单声道文件码率超过256k，无论是手动设置还是尝试转换单声道文件\n\n"
+                        "3.转为aac格式时：\n  原始文件采样率非支持的数值（见下拉菜单），而选择了与源相同\n\n"
+                        "4.转为flac格式时：\n  在自定义数值上设置了常规播放器不支持的数值，虽然可以转换，但可能只有专业软件能打开\n\n"
+                        "5.其他：\n  请检查你的输入文件，它可能已损坏或被加密，如果是Unicode编码问题一般可以通过简单的改名解决\n\n"
                         "此外，请妥善利用文件信息页面，通过把媒体文件拖入能得到详细的信息帮助你确定错误。\n\n")
             )
             failed_files_text_edit.setReadOnly(True)
@@ -1095,12 +1272,12 @@ class AudioConverter(QWidget):
         if ffmpeg_path:
             self.ffmpeg_edit.setText(ffmpeg_path)
         else:
-            self.check_ffmpeg()
+            self.ffmpeg_edit.setText('ffmpeg')
 
         if ffprobe_path:
             self.file_info_tab.ffprobe_edit.setText(ffprobe_path)
         else:
-            self.check_ffprobe()
+            self.file_info_tab.ffprobe_edit.setText('ffprobe')
 
         format = self.settings.value("format", "mp3")
         self.format_combo.setCurrentText(format)
@@ -1164,9 +1341,6 @@ if __name__ == '__main__':
     else:
         print('Use default')
 
-    font = app.font()
-    font.setPixelSize(12)
-    app.setFont(font)
     ex = AudioConverter()
     app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5', palette=LightPalette))
     remove_screen_splash()
