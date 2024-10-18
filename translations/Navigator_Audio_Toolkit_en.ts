@@ -29,7 +29,7 @@
     <message>
         <location filename="../navigator_audio_toolkit.py" line="474"/>
         <source>未鸟的音频工具箱 v0.1</source>
-        <translation>Navigator Audio Toolkit v0.1</translation>
+        <translation type="obsolete">Navigator Audio Toolkit v0.1</translation>
     </message>
     <message>
         <location filename="../navigator_audio_toolkit.py" line="491"/>
@@ -456,6 +456,11 @@ Here are some common reasons for failure:
   Please check your input file, it may be corrupted or encrypted. If it&apos;s a Unicode encoding issue, it can usually be resolved by simply renaming the file
 
 Additionally, please make good use of the file information page. By dragging media files into it, you can get detailed information to help you identify errors.</translation>
+    </message>
+    <message>
+        <location filename="../navigator_audio_toolkit.py" line="474"/>
+        <source>未鸟的音频工具箱 v0.1.1</source>
+        <translation>Navigator Audio Toolkit v0.1.1</translation>
     </message>
 </context>
 <context>

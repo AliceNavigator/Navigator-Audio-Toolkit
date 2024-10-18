@@ -471,7 +471,7 @@ class AudioConverter(QWidget):
         base_width, base_height = 650, 450
         scaled_width = int(base_width * scaling_factor)
         scaled_height = int(base_height * scaling_factor)
-        self.setWindowTitle(self.tr('未鸟的音频工具箱 v0.1'))
+        self.setWindowTitle(self.tr('未鸟的音频工具箱 v0.1.1'))
         self.setGeometry(100, 100, scaled_width, scaled_height)
 
         # Scale the font, in theory this is redundant but there are strange special cases
